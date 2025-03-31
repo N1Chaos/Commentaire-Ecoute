@@ -1,5 +1,289 @@
 // Définir les définitions des mots
 const wordDefinitions = {
+    // Cordes frottées
+    "violon": {
+        definition: "Instrument à cordes frottées, le plus petit et aigu de sa famille. Joué avec un archet ou en pizzicato.",
+        image: "images/violon.jpg",
+        audio: "audio/violon.mp3"
+    },
+    "violon alto": {
+        definition: "Instrument à cordes frottées, légèrement plus grand que le violon, avec un son plus chaud et grave.",
+        image: "images/alto.jpg",
+        audio: "audio/alto.mp3"
+    },
+    "violoncelle": {
+        definition: "Instrument à cordes frottées joué assis, tenu entre les jambes. Tessiture entre l'alto et la contrebasse.",
+        image: "images/violoncelle.jpg",
+        audio: "audio/violoncelle.mp3"
+    },
+    "contrebasse": {
+        definition: "Le plus grand et le plus grave des instruments à cordes frottées, utilisé en classique et en jazz.",
+        image: "images/contrebasse.jpg",
+        audio: "audio/contrebasse.mp3"
+    },
+    "archet": {
+        definition: "Baguette en bois avec crins de cheval tendus, utilisée pour frotter les cordes des instruments.",
+        image: "images/archet.jpg",
+        audio: "audio/archet.mp3"
+    },
+
+    // Cordes pincées
+    "guitare": {
+        definition: "Instrument à cordes pincées, avec caisse de résonance et manche fretté. Existe en versions classique, folk et électrique.",
+        image: "images/guitare.jpg",
+        audio: "audio/guitare.mp3"
+    },
+    "harpe": {
+        definition: "Grand instrument à cordes pincées, joué verticalement. Utilisé en musique classique et celtique.",
+        image: "images/harpe.jpg",
+        audio: "audio/harpe.mp3"
+    },
+    "clavecin": {
+        definition: "Instrument à clavier et cordes pincées, très utilisé à l'époque baroque.",
+        image: "images/clavecin.jpg",
+        audio: "audio/clavecin.mp3"
+    },
+    "guitare électrique": {
+        definition: "Guitare sans caisse de résonance, nécessitant un amplificateur. Utilisée en rock, blues et jazz.",
+        image: "images/guitare-electrique.jpg",
+        audio: "audio/guitare-electrique.mp3"
+    },
+    "basse électrique": {
+        definition: "Version grave de la guitare électrique, souvent à 4 cordes. Essentielle dans les groupes modernes.",
+        image: "images/basse-electrique.jpg",
+        audio: "audio/basse-electrique.mp3"
+    },
+
+    // Cordes frappées
+    "piano": {
+        definition: "Instrument à clavier où les cordes sont frappées par des marteaux. Existe en versions acoustique et numérique.",
+        image: "images/piano.jpg",
+        audio: "audio/piano.mp3"
+    },
+
+    // Bois
+    "flûte traversière": {
+        definition: "Instrument à vent en métal (originellement en bois), sans anche. Son clair et brillant.",
+        image: "images/flute-traversiere.jpg",
+        audio: "audio/flute-traversiere.mp3"
+    },
+    "flûte à bec": {
+        definition: "Petite flûte droite avec un bec, souvent utilisée pour l'apprentissage musical.",
+        image: "images/flute-a-bec.jpg",
+        audio: "audio/flute-a-bec.mp3"
+    },
+    "clarinette": {
+        definition: "Instrument à anche simple, au son chaud et expressif. Utilisée en classique et jazz.",
+        image: "images/clarinette.jpg",
+        audio: "audio/clarinette.mp3"
+    },
+    "cor de basset": {
+        definition: "Variété de clarinette alto, plus grave, utilisée notamment par Mozart.",
+        image: "images/cor-de-basset.jpg",
+        audio: "audio/cor-de-basset.mp3"
+    },
+    "saxophone": {
+        definition: "Instrument en métal à anche simple, inventé par Adolphe Sax. Très présent en jazz.",
+        image: "images/saxophone.jpg",
+        audio: "audio/saxophone.mp3"
+    },
+
+    // Cuivres
+    "trompette": {
+        definition: "Instrument à vent aigu, à pistons. Son brillant et puissant.",
+        image: "images/trompette.jpg",
+        audio: "audio/trompette.mp3"
+    },
+    "cor": {
+        definition: "Instrument à vent avec large pavillon, son chaud et rond. Utilisé en orchestre.",
+        image: "images/cor.jpg",
+        audio: "audio/cor.mp3"
+    },
+    "trombone": {
+        definition: "Instrument à coulisse, permettant des glissandos. Son puissant et noble.",
+        image: "images/trombone.jpg",
+        audio: "audio/trombone.mp3"
+    },
+    "tuba": {
+        definition: "Le plus grave des cuivres, avec un son profond et rond.",
+        image: "images/tuba.jpg",
+        audio: "audio/tuba.mp3"
+    },
+
+    // Percussions (catégories générales)
+    "percussions": {
+        definition: "Famille d'instruments dont le son est produit en frappant, secouant ou grattant.",
+        image: "images/percussions.jpg",
+        audio: "audio/percussions.mp3"
+    },
+    "percussions à peau": {
+        definition: "Percussions dont le son est produit par la vibration d'une membrane tendue.",
+        image: "images/percussions-peau.jpg",
+        audio: "audio/percussions-peau.mp3"
+    },
+    "percussions en bois": {
+        definition: "Percussions faites en bois.",
+        image: "images/percussions-bois.jpg",
+        audio: "audio/percussions-bois.mp3"
+    },
+    "percussions métalliques": {
+        definition: "Percussions faites en métal, comme les cymbales ou le triangle.",
+        image: "images/percussions-metal.jpg",
+        audio: "audio/percussions-metal.mp3"
+    },
+
+    // Percussions à hauteur indéterminée
+    "batterie": {
+        definition: "Ensemble de percussions (toms, cymbales, grosse caisse) joué avec des baguettes.",
+        image: "images/batterie.jpg",
+        audio: "audio/batterie.mp3"
+    },
+    "caisse claire": {
+        definition: "Tambour avec timbre (fil métallique vibrant), utilisé en orchestre et batterie.",
+        image: "images/caisse-claire.jpg",
+        audio: "audio/caisse-claire.mp3"
+    },
+    "grosse caisse": {
+        definition: "Tambour très grave, utilisé pour marquer les temps forts.",
+        image: "images/grosse-caisse.jpg",
+        audio: "audio/grosse-caisse.mp3"
+    },
+    "tom": {
+        definition: "Tambour sans timbre, de différentes tailles, composant de la batterie.",
+        image: "images/tom.jpg",
+        audio: "audio/tom.mp3"
+    },
+    "cymbales": {
+        definition: "Disques métalliques frappés ou entrechoqués pour produire un son vibrant.",
+        image: "images/cymbales.jpg",
+        audio: "audio/cymbales.mp3"
+    },
+    "charlestone": {
+        definition: "Paire de cymbales actionnée par une pédale, composant de la batterie.",
+        image: "images/charlestone.jpg",
+        audio: "audio/charlestone.mp3"
+    },
+    "tambourin": {
+        definition: "Petit cadre avec des cymbalettes ou une peau, secoué ou frappé.",
+        image: "images/tambourin.jpg",
+        audio: "audio/tambourin.mp3"
+    },
+    "triangle": {
+        definition: "Tige métallique en forme de triangle, frappée avec une baguette.",
+        image: "images/triangle.jpg",
+        audio: "audio/triangle.mp3"
+    },
+    "woodblock": {
+        definition: "Bloc de bois creux frappé avec une baguette, son sec et percussif.",
+        image: "images/woodblock.jpg",
+        audio: "audio/woodblock.mp3"
+    },
+    "claves": {
+        definition: "Bâtons de bois dur entrechoqués pour produire un son claquant.",
+        image: "images/claves.jpg",
+        audio: "audio/claves.mp3"
+    },
+    "guiro": {
+        definition: "Instrument à rainures frottées avec une baguette, son gratté caractéristique.",
+        image: "images/guiro.jpg",
+        audio: "audio/guiro.mp3"
+    },
+    "congas": {
+        definition: "Tambours cubains hauts et étroits, joués à mains nues.",
+        image: "images/congas.jpg",
+        audio: "audio/congas.mp3"
+    },
+    "bongos": {
+        definition: "Petits tambours jumelés, d'origine cubaine, joués avec les doigts.",
+        image: "images/bongos.jpg",
+        audio: "audio/bongos.mp3"
+    },
+    "djembe": {
+        definition: "Tambour africain en forme de calice, joué à mains nues.",
+        image: "images/djembe.jpg",
+        audio: "audio/djembe.mp3"
+    },
+    "timbales latines": {
+        definition: "Petits tambours à peau fine, utilisés dans la musique latine.",
+        image: "images/timbales-latines.jpg",
+        audio: "audio/timbales-latines.mp3"
+    },
+    "shaker": {
+        definition: "Petit instrument secoué, rempli de granulés pour produire un son continu.",
+        image: "images/shaker.jpg",
+        audio: "audio/shaker.mp3"
+    },
+    "maracas": {
+        definition: "Instrument de percussion secoué, constitué d'une sphère creuse remplie de graines.",
+        image: "images/maracas.jpg",
+        audio: "audio/maracas.mp3"
+    },
+    "tambour de basque": {
+        definition: "Cadre circulaire avec une peau et des cymbalettes, joué en le secouant ou en frappant la peau.",
+        image: "images/tambour-basque.jpg",
+        audio: "audio/tambour-basque.mp3"
+    },
+    
+    "tam-tam": {
+        definition: "Grand disque métallique suspendu, sans note définie, produisant un son complexe et étalé.",
+        image: "images/tam-tam.jpg",
+        audio: "audio/tam-tam.mp3"
+    },
+
+    // Percussions à hauteur déterminée
+    "timbales": {
+        definition: "Tambours accordables, utilisés en orchestre pour des notes précises.",
+        image: "images/timbales.jpg",
+        audio: "audio/timbales.mp3"
+    },
+    "xylophone": {
+        definition: "Instrument à lames de bois frappées, son sec et clair.",
+        image: "images/xylophone.jpg",
+        audio: "audio/xylophone.mp3"
+    },
+    "marimba": {
+        definition: "Cousin grave du xylophone, avec des lames en bois et des résonateurs.",
+        image: "images/marimba.jpg",
+        audio: "audio/marimba.mp3"
+    },
+    "vibraphone": {
+        definition: "Instrument à lames métalliques avec motorisation pour un effet vibrato.",
+        image: "images/vibraphone.jpg",
+        audio: "audio/vibraphone.mp3"
+    },
+    "glockenspiel": {
+        definition: "Petit instrument à lames métalliques, son cristallin et aigu.",
+        image: "images/glockenspiel.jpg",
+        audio: "audio/glockenspiel.mp3"
+    },
+    "cloches tubulaires": {
+        definition: "Série de tubes métalliques accordés, frappés avec un maillet.",
+        image: "images/cloches-tubulaires.jpg",
+        audio: "audio/cloches-tubulaires.mp3"
+    },
+    "célesta": {
+        definition: "Instrument à clavier et lames métalliques, son proche du carillon.",
+        image: "images/celesta.jpg",
+        audio: "audio/celesta.mp3"
+    },
+    "gong": {
+        definition: "Grand disque métallique suspendu, frappé pour produire un son à hauteur déterminé profond et résonnant.",
+        image: "images/gong.jpg",
+        audio: "audio/gong.mp3"
+    },
+
+    // Catégories générales (vents)
+    "bois": {
+        definition: "Famille d'instruments à vent traditionnellement en bois (flûtes, clarinettes, etc.).",
+        image: "images/bois.jpg",
+        audio: "audio/bois.mp3"
+    },
+    "cuivres": {
+        definition: "Famille d'instruments à vent en métal, où le son est produit par la vibration des lèvres (trompette, trombone, etc.).",
+        image: "images/cuivres.jpg",
+        audio: "audio/cuivres.mp3"
+    },
+
     "soprano colorature": {
         definition: "Type de soprano avec un large ambitus et une grande agilité vocale.",
         audio: "audio/soprano-colorature.mp3"  // Chemin du fichier audio
