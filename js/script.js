@@ -1,5 +1,109 @@
 // Définir les définitions des mots
 const wordDefinitions = {
+        "musique occidentale de tradition écrite": {
+            "definition": "Style musical savant européen caractérisé par son système de notation et son évolution historique à travers les périodes stylistiques majeures."
+        },
+        "musique du Moyen-Age": {
+            "definition": "Style (Ve-XVe siècles) marqué par le chant grégorien, l'organum, les troubadours et l'émergence de la polyphonie. Instruments typiques : vièle, harpe, flûte à bec."
+        },
+        "musique de la Renaissance": {
+            "definition": "Style (XVe-XVIe siècles) caractérisé par la polyphonie vocale complexe et le développement des instruments comme le luth et le clavecin."
+        },
+        "style baroque": {
+            "definition": "Style (1600-1750) marqué par la basse continue, l'opéra, les formes concertantes et les grands maîtres comme Bach et Haendel."
+        },
+        "style classique": {
+            "definition": "Style (1750-1800) caractérisé par la clarté formelle, l'équilibre et les compositeurs comme Mozart et Haydn."
+        },
+        "style romantique": {
+            "definition": "Style (1800-1900) privilégiant l'expression des émotions, les formes libres et les grands virtuoses comme Chopin et Liszt."
+        },
+        "musique moderne": {
+            "definition": "Style (début XXe siècle) marqué par la rupture avec le système tonal et l'émergence de nouvelles techniques compositionnelles."
+        },
+        "musique contemporaine": {
+            "definition": "Style actuel (après 1945) explorant des approches innovantes comme la musique concrète ou minimaliste."
+        },
+
+    
+            "musiques traditionnelles / folk": {
+                "definition": "Style musical transmis oralement, propre à une culture ou région, utilisant souvent des instruments locaux caractéristiques."
+            },
+            "musique celtique": {
+                "definition": "Style musical des pays celtes utilisant harpe, cornemuse et violon, avec des mélodies caractéristiques."
+            },
+            "flamenco": {
+                "definition": "Style andalou associant chant passionné, danse expressive et guitare rythmique."
+            },
+            "fado": {
+                "definition": "Style chanté portugais exprimant la nostalgie, accompagné de la guitare portugaise."
+            },
+            "gnawa": {
+                "definition": "Style marocain aux rythmes hypnotiques, mêlant traditions africaines et soufies."
+            },
+            "blues traditionnel": {
+                "definition": "Style afro-américain né dans le Delta du Mississippi, basé sur des structures simples et une expressivité vocale intense."
+            },
+            "musique africaine": {
+                "definition": "Style diversifié caractérisé par des polyphonies et des polyrythmies complexes."
+            },
+        
+                "musiques populaires modernes": {
+                    "definition": "Styles musicaux apparus principalement au XXe siècle, caractérisé par :\n1. Une large diffusion médiatique (radio, disques, streaming)\n2. Une production souvent industrielle\n3. Une forte association avec la culture de masse\n4. L'utilisation d'instruments amplifiés/électroniques\n\nPrincipales caractéristiques :\n- Structures souvent simples et répétitives\n- Importance du rythme et de la mélodie\n- Forte connexion avec les mouvements sociaux et générationnels\n- Évolution rapide influencée par la technologie."
+                },
+                "jazz": {
+                    "definition": "Style musical né aux États-Unis combinant improvisation, syncopes et harmonies sophistiquées."
+                },
+                "rock": {
+                    "definition": "Style apparu dans les années 1950 centré sur les guitares électriques et une énergie rythmique puissante."
+                },
+                "reggae": {
+                    "definition": "Style jamaïcain au tempo modéré, marqué par l'accentuation du contretemps et des textes engagés."
+                },
+                "rap": {
+                    "definition": "Style vocal parlé-rythmé, utilisant à l'origine des samples en boucle comme accompagnement, élément central de la culture hip-hop."
+                },
+                "musiques du monde": {
+        "definition": "Catégorie regroupant les traditions musicales non-occidentales et les fusions interculturelles, caractérisées par : une transmission souvent orale ou maître-élève, l'utilisation d'instruments traditionnels spécifiques, des systèmes musicaux différents de la théorie occidentale (échelles, rythmes), des fonctions sociales/cérémonielles importantes."
+},
+                    "samba": {
+                        "definition": "Style brésilien énergique associé au carnaval, basé sur des percussions complexes."
+                    },
+                    "raga": {
+                        "definition": "Style mélodique de la musique indienne lié à des moments précis et des émotions spécifiques."
+                    },
+                    "musique arabo-andalouse": {
+                        "definition": "Style résultant d'un métissage entre musique arabe venue de l'Orient, musique afro-berbère du Maghreb et musique pratiquée dans la Péninsule Ibérique avant le VIIIe siècle, utilisant des modes spécifiques."
+                    },
+                    "chants pygmées": {
+                        "definition": "Style vocal africain caractérisé par des polyphonies complexes et l'utilisation du yodel."
+                    },
+                    "musiques rituelles ou spirituelles": {
+        "definition": "Pratiques musicales sacrées ou cérémonielles remplissant une fonction médiatrice entre le profane et le sacré. Elles ont pour vocation d'établir une communication avec les entités spirituelles (invocations, prières chantées), de faciliter les transitions ritualisées (rites de passage, cycles calendaires), de transmettre des connaissances religieuses par la mise en musique des textes sacrés, d'induire des états de conscience modifiés (transe, extase, méditation)."
+},
+                        "chamanisme": {
+                            "definition": "Style musical utilisé dans les pratiques spirituelles pour induire des états de transe."
+                        },
+                        "gospel": {
+                            "definition": "Style religieux afro-américain marqué par son intensité émotionnelle et ses harmonies vocales riches."
+                        },
+                        "qawwali": {
+                            "definition": "Style soufi visant à provoquer l'extase mystique par la répétition rythmique et mélodique."
+                        },
+                            "musique de tradition orale": {
+                                "definition": "Style transmis sans support écrit, par imitation et mémoire collective."
+                            },
+                            "musique de tradition écrite": {
+                                "definition": "Pratique musicale fondée sur un système de notation précis permettant la fixation et la transmission des œuvres."},
+                            "musique savante": {
+                                "definition": "Style composé et noté, relevant d'une démarche artistique élaborée."
+                            },
+                                "musique populaire": {
+                                  "definition": "Musique transmise principalement par voie orale au sein d'une communauté, associée à des pratiques collectives et quotidiennes, se distinguant de la musique savante par son mode de transmission et son ancrage dans une culture."
+                                },
+                                "cas hybrides": {
+                                  "definition": "Pratiques musicales combinant des éléments de transmission orale et écrite, créant un continuum entre culture savante et populaire. Ces formes émergent lorsque des traditions orales sont notées, lorsque des musiques écrites intègrent des pratiques improvisées, ou lorsque des musiciens formés à l'écrit revisitent des répertoires traditionnels. Exemples typiques : le jazz (improvisation orale sur structures harmoniques écrites), le flamenco (phrases mélodiques transmises oralement mais styles codifiés par écrit), ou certaines musiques baroques (partitions écrites avec ornementation improvisée)."
+                                },
     // Cordes frottées
     "violon": {
         definition: "Instrument à cordes frottées, le plus petit et aigu de sa famille. Joué avec un archet ou en pizzicato.",
