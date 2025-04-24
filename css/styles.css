@@ -223,7 +223,7 @@ button.reset-button:hover {
 
 /* Adaptation mobile */
 @media (max-width: 768px) {
-    #categories-container, #second-row-container {
+    #categories-container, #second-row-container, #third-row-container {
         grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
     }
 }

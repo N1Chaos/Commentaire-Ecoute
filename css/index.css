@@ -414,3 +414,22 @@ textarea {
         width: 80%; /* Réduit la largeur du bouton d'upload sur petits écrans */
     }
 }
+@media (max-width: 1024px) and (orientation: portrait) {
+    html {
+      transform: rotate(90deg);
+      transform-origin: left top;
+      width: 100vh;
+      height: 100vw;
+      overflow-x: hidden;
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+  
+    body {
+      width: 100vh;
+      height: 100vw;
+      overflow: hidden;
+    }
+  }
+  
