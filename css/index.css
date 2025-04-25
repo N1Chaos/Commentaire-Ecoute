@@ -47,6 +47,7 @@ html, body {
     justify-content: flex-start;
     padding: var(--padding);
     margin-right: 10px;
+    overflow-y: auto;
 }
 
 /* Boutons dans le cadre gauche */
@@ -63,6 +64,7 @@ html, body {
     transition: background-color 0.3s ease;
     font-family: var(--body-font); /* Utilisation de la police globale */
     font-size: var(--font-size);
+    
 }
 
 .button:hover {
@@ -215,6 +217,7 @@ textarea {
     margin-right: 10px;
     z-index: 10; /* Assure que le commentaire audio est au-dessus des autres éléments */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère pour ajouter de la profondeur */
+    overflow-y: auto;
 }
 
 /* Conteneur du lecteur audio */
