@@ -59,6 +59,7 @@ function loadVideo() {
     const videoID = extractVideoID(videoUrl);
     if (videoID) {
         document.getElementById('youtubePlayer').src = `https://www.youtube.com/embed/${videoID}`;
+        localStorage.setItem('youtubeVideoID', videoID); // ➕ Sauvegarde l’ID
     } else {
         alert('Veuillez entrer une URL YouTube valide.');
     }
@@ -70,6 +71,70 @@ function extractVideoID(url) {
     const matches = url.match(regex);
     return matches ? matches[1] : null;
 }
+
+// ➕ Recharger automatiquement la vidéo à l'ouverture de la page
+document.addEventListener('DOMContentLoaded', function () {
+    // Charge les mots sélectionnés
+    displaySelectedWords();
+
+    // Charge l'audio si besoin
+    let audioBlob;
+
+    // ➕ Recharge la vidéo depuis le stockage local
+    const savedVideoID = localStorage.getItem('youtubeVideoID');
+    if (savedVideoID) {
+        document.getElementById('youtubePlayer').src = `https://www.youtube.com/embed/${savedVideoID}`;
+        document.getElementById('videoUrl').value = `https://www.youtube.com/watch?v=${savedVideoID}`;
+    }
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(function (stream) {
+                mediaRecorder = new MediaRecorder(stream);
+                let audioChunks = [];
+
+                mediaRecorder.ondataavailable = function (event) {
+                    audioChunks.push(event.data);
+                };
+
+                mediaRecorder.onstop = function () {
+                    audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    document.getElementById('audioPlayback').src = audioUrl;
+                    document.getElementById('audioPlayback').style.display = 'block';
+                    document.getElementById('status').textContent = 'Enregistrement terminé';
+                };
+
+                recordButton.onclick = function () {
+                    if (mediaRecorder.state === 'inactive') {
+                        audioChunks = [];
+                        mediaRecorder.start();
+                        recordButton.textContent = "Arrêter l'enregistrement";
+                    } else {
+                        mediaRecorder.stop();
+                        recordButton.textContent = "Démarrer l'enregistrement";
+                    }
+                };
+            })
+            .catch(function (error) {
+                alert("Une erreur est survenue lors de l'accès au microphone.");
+                console.error("Erreur d'accès au micro : ", error);
+            });
+    }
+
+    document.getElementById('downloadButton').onclick = function () {
+        if (!audioBlob) {
+            alert('Aucun enregistrement audio disponible pour le téléchargement.');
+            return;
+        }
+
+        const fileName = document.getElementById('fileName').value || 'audio';
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(audioBlob);
+        link.download = `${fileName}.wav`;
+        link.click();
+    };
+});
 
 // Fonction pour charger le fichier audio dans le player
 document.getElementById('audioFile').addEventListener('change', function(event) {
