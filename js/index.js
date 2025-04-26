@@ -16,7 +16,8 @@ function deleteWord(word) {
 
 function clearSelectedWords() {
     if (confirm('Voulez-vous vraiment effacer toute la sélection ?')) {
-        document.getElementById('selectedWordsDisplay').innerHTML = '';
+        const selectedWordsDisplay = document.getElementById('selectedWordsDisplay');
+        selectedWordsDisplay.innerHTML = '';
         localStorage.removeItem('selectedWords');
     }
 }
@@ -73,51 +74,50 @@ function extractVideoID(url) {
 // DOMContentLoaded
 // -------------------------
 document.addEventListener('DOMContentLoaded', function () {
+    // Affiche les mots sélectionnés
     displaySelectedWords();
 
-    // VIDEO YOUTUBE - restaurer si déjà enregistrée
+    // Recharge la vidéo YouTube
     const savedVideoID = localStorage.getItem('youtubeVideoID');
     if (savedVideoID) {
         document.getElementById('youtubePlayer').src = `https://www.youtube.com/embed/${savedVideoID}`;
         document.getElementById('videoUrl').value = `https://www.youtube.com/watch?v=${savedVideoID}`;
     }
 
-    // ENREGISTREMENT AUDIO (Micro)
+    // Enregistrement audio (micro)
     let audioBlob;
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ audio: true })
-            .then(stream => {
-                const mediaRecorder = new MediaRecorder(stream);
-                let audioChunks = [];
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+            const mediaRecorder = new MediaRecorder(stream);
+            let audioChunks = [];
 
-                mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+            mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+            mediaRecorder.onstop = () => {
+                audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                const audioUrl = URL.createObjectURL(audioBlob);
+                document.getElementById('audioPlayback').src = audioUrl;
+                document.getElementById('audioPlayback').style.display = 'block';
+                document.getElementById('status').textContent = 'Enregistrement terminé';
+            };
 
-                mediaRecorder.onstop = () => {
-                    audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-                    const audioUrl = URL.createObjectURL(audioBlob);
-                    document.getElementById('audioPlayback').src = audioUrl;
-                    document.getElementById('audioPlayback').style.display = 'block';
-                    document.getElementById('status').textContent = 'Enregistrement terminé';
-                };
-
-                document.getElementById('recordButton').onclick = () => {
-                    if (mediaRecorder.state === 'inactive') {
-                        audioChunks = [];
-                        mediaRecorder.start();
-                        recordButton.textContent = "Arrêter l'enregistrement";
-                    } else {
-                        mediaRecorder.stop();
-                        recordButton.textContent = "Démarrer l'enregistrement";
-                    }
-                };
-            })
-            .catch(error => {
-                alert("Une erreur est survenue lors de l'accès au microphone.");
-                console.error("Erreur micro :", error);
-            });
+            document.getElementById('recordButton').onclick = function () {
+                if (mediaRecorder.state === 'inactive') {
+                    audioChunks = [];
+                    mediaRecorder.start();
+                    this.textContent = "Arrêter l'enregistrement";
+                } else {
+                    mediaRecorder.stop();
+                    this.textContent = "Démarrer l'enregistrement";
+                }
+            };
+        }).catch(error => {
+            alert("Une erreur est survenue lors de l'accès au microphone.");
+            console.error("Erreur d'accès au micro : ", error);
+        });
     }
 
-    document.getElementById('downloadButton').onclick = () => {
+    // Téléchargement du commentaire audio
+    document.getElementById('downloadButton').onclick = function () {
         if (!audioBlob) {
             alert('Aucun enregistrement audio disponible pour le téléchargement.');
             return;
@@ -130,23 +130,23 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // -------------------------
-    // GESTION DE L'AUDIO (Option B)
+    // AUDIO UTILISATEUR AVEC SAUVEGARDE BASE64
     // -------------------------
-    const audioFileInput = document.getElementById('audioFile');
     const audioPlayer = document.getElementById('audioPlayer');
     const audioSource = document.getElementById('audioSource');
+    const audioFileInput = document.getElementById('audioFile');
 
-    // Charger l'audio sauvegardé
-    const savedAudioURL = localStorage.getItem('userAudioURL');
-    const savedAudioTime = localStorage.getItem('userAudioTime');
+    // Restaure audio
+    const savedBase64 = localStorage.getItem('userAudioBase64');
+    const savedTime = localStorage.getItem('userAudioTime');
 
-    if (savedAudioURL) {
-        audioSource.src = savedAudioURL;
+    if (savedBase64) {
+        audioSource.src = savedBase64;
         audioPlayer.load();
 
         audioPlayer.addEventListener('loadedmetadata', () => {
-            if (savedAudioTime) {
-                audioPlayer.currentTime = parseFloat(savedAudioTime);
+            if (savedTime) {
+                audioPlayer.currentTime = parseFloat(savedTime);
             }
         });
 
@@ -155,31 +155,34 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Lorsqu’un nouveau fichier est sélectionné
+    // Lors de sélection d’un nouveau fichier
     audioFileInput.addEventListener('change', function (event) {
         const file = event.target.files[0];
         if (!file) return;
 
-        const objectURL = URL.createObjectURL(file);
-        audioSource.src = objectURL;
-        audioPlayer.load();
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const base64Audio = e.target.result;
+            audioSource.src = base64Audio;
+            audioPlayer.load();
 
-        // Sauvegarde de l'URL pour lecture + reset du temps
-        localStorage.setItem('userAudioURL', objectURL);
-        localStorage.setItem('userAudioTime', '0');
+            localStorage.setItem('userAudioBase64', base64Audio);
+            localStorage.setItem('userAudioTime', '0');
+        };
+        reader.readAsDataURL(file);
     });
 });
 
 // -------------------------
-// GÉNÉRER FICHIER COMMENTAIRE
+// GÉNÉRER UN FICHIER TEXTE (COMMENTAIRE)
 // -------------------------
 function generateTextFile() {
-    const text = document.getElementById('commentText').value;
-    if (text.trim() === '') {
+    const textContent = document.getElementById('commentText').value;
+    if (textContent.trim() === '') {
         alert('Veuillez écrire quelque chose avant de générer le fichier.');
         return;
     }
-    const blob = new Blob([text], { type: 'text/plain' });
+    const blob = new Blob([textContent], { type: 'text/plain' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = 'commentaire.txt';
