@@ -1,5 +1,91 @@
 // Définir les définitions des mots
-const wordDefinitions = {
+const wordDefinitions = 
+        {
+            
+                "latin": {
+                  "definition": "Langue indo-européenne de l'Antiquité parlée à Rome et en Italie, à l'origine des langues romanes modernes et utilisée longtemps comme langue savante en Europe."
+                },
+                "grec": {
+                  "definition": "Langue indo-européenne parlée en Grèce antique, connue pour ses grands textes littéraires, philosophiques et scientifiques en grec ancien, ancêtre du grec moderne."
+                },              
+                "langues créoles": {
+                  "definition": "Langues nées du contact entre plusieurs langues, devenues langues maternelles, souvent issues de situations coloniales, comme le créole haïtien ou le créole réunionnais."
+                },
+                "langues pidgin": {
+                  "definition": "Langues simplifiées créées pour permettre la communication entre groupes ne partageant pas de langue commune, généralement utilisées comme langues secondaires."
+                },
+                "langues signées": {
+                  "definition": "Langues naturelles utilisant les gestes, expressions faciales et mouvements des mains pour communiquer, comme la langue des signes française (LSF) ou l'American Sign Language (ASL)."
+                },
+                "langues construites": {
+                  "definition": "Langues inventées volontairement par des individus ou des groupes pour des buts spécifiques (communication universelle, œuvres de fiction ou musicales), comme l'espéranto, le Sindarin (langue des Elfes de la Terre du Milieu) ou le Kobaïen du groupe Magma."
+                },              
+                "langues aborigènes": {
+                  "definition": "Ensemble de centaines de langues parlées traditionnellement par les peuples aborigènes d'Australie, souvent très variées et appartenant à plusieurs familles distinctes comme le pama-nyungan."
+                },              
+                "langues amérindiennes": {
+                  "definition": "Ensemble très diversifié de langues parlées par les peuples autochtones des Amériques, comme le quechua, le nahuatl, le guarani et le navajo."
+                },
+            "langue coréenne": {
+              "definition": "Langue parlée en Corée du Sud et du Nord, utilisant l'alphabet hangul, considérée comme une langue isolée sans parenté clairement établie avec d'autres familles linguistiques."
+            },
+            "langue japonaise": {
+             "definition": "Langue isolée parlée au Japon, utilisant trois systèmes d'écriture (hiragana, katakana, kanji) et n'ayant pas de lien direct confirmé avec d'autres familles linguistiques."
+                },
+            "langues sino-tibétaines": {
+              "definition": "Grande famille linguistique d'Asie regroupant le chinois (mandarin, cantonais), le tibétain et le birman."
+            },
+            "langues dravidiennes": {
+              "definition": "Famille de langues du sud de l'Inde et du Sri Lanka, comprenant le tamoul, le télougou, le kannada et le malayalam."
+            },
+            "langues ouraliennes": {
+              "definition": "Famille de langues d'Europe du Nord et de Sibérie, dont le finnois, l'estonien et le hongrois sont les principales représentantes."
+            },
+            "langues altaïques": {
+              "definition": "Groupe hypothétique rassemblant les langues turques, mongoles et toungouses d'Asie centrale et orientale."
+            },
+            "langues austroasiatiques": {
+              "definition": "Famille de langues d'Asie du Sud-Est comprenant le vietnamien, le khmer (cambodgien) et plusieurs langues tribales."
+            },
+            "langues austronésiennes": {
+              "definition": "Grande famille de langues parlées des îles du Pacifique jusqu'à Madagascar, incluant le malais, le tagalog et le maori."
+            },          
+        "langues afro-asiatiques": {
+          "definition": "Famille de langues parlées principalement en Afrique du Nord et au Moyen-Orient, incluant l'arabe, le berbère, et le haoussa."
+        },
+        "langues nilo-sahariennes": {
+          "definition": "Groupe hypothétique de langues parlées autour du Nil et du Sahara central, comprenant le dinka, le kanuri et d'autres langues minoritaires."
+        },
+        "langues nigéro-congolaises": {
+          "definition": "La plus grande famille de langues africaines en nombre de langues, comprenant le swahili, le yoruba et le zoulou."
+        },
+        "langues khoïsan": {
+          "definition": "Groupe de langues d'Afrique australe caractérisées par l'utilisation de clics, parlées par les peuples khoïkhoïs et sans."
+        },
+        "langues oubanguiennes": {
+          "definition": "Sous-groupe de langues nigéro-congolaises parlées principalement en République centrafricaine et ses alentours, incluant le sango."
+        },
+        "langues mandé": {
+          "definition": "Sous-famille de langues nigéro-congolaises parlée en Afrique de l'Ouest, incluant le bambara, le malinké et le soninké."
+        },      
+        "langues germaniques": {
+          "definition": "Groupe de langues indo-européennes apparu en Europe du Nord, comprenant l'anglais, l'allemand, le néerlandais et les langues scandinaves."
+        },
+        "langues romanes": {
+          "definition": "Groupe de langues issues du latin vulgaire de l'Empire romain, incluant le français, l'espagnol, l'italien, le portugais et le roumain."
+        },
+        "langues slaves": {
+          "definition": "Famille de langues indo-européennes parlées en Europe de l'Est et du Nord, comme le russe, le polonais, le tchèque et le serbe."
+        },
+        "langues finno-ougriennes": {
+          "definition": "Groupe de langues non indo-européennes d'Europe du Nord et de l'Oural, comprenant le finnois, l'estonien et le hongrois."
+        },
+        "langues celtiques": {
+          "definition": "Anciennes langues indo-européennes parlées historiquement en Europe de l'Ouest, dont le breton, le gaélique irlandais et le gallois."
+        },
+        "langue basque": {
+          "definition": "Langue isolée, sans lien connu avec d'autres familles, parlée au Pays basque entre la France et l'Espagne."
+        },
         "musique occidentale de tradition écrite": {
             "definition": "Style musical savant européen caractérisé par son système de notation et son évolution historique à travers les périodes stylistiques majeures."
         },
